@@ -2,9 +2,9 @@
 This project creates a timed quiz on coding concepts and stores high scores.
 
 ## Deployed Application
+[Code-Quiz](https://briceveyna.github.io/Code-Quiz/)
 
-
-# Technology Used
+## Technology Used
 - JavaScript
 - HTML
 - CSS
