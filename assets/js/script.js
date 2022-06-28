@@ -1,11 +1,14 @@
 var timerEl = document.getElementById("timer");
 var scoresEl = document.getElementById("scores");
 var mainEl = document.getElementsByName("main");
+var startEl = document.getElementById("start");
 
 function displayIntroduction() {
-    var messageIntroHeader = "Coding Quiz";
-    var messageIntroBody = "Test your knowledge with these coding questions! Once you click start, the timer will begin counting down. Each correct answer will add 10 seconds and each incorrect answer will subtract 10 seconds. High scores are recorded, see if you can beat your record!";
 
+}
+
+function startQuiz() {
+    startEl.addEventListener("click", displayQuestion);
 }
 
 function displayQuestion() {
@@ -15,7 +18,6 @@ function displayQuestion() {
 }
 
 function displayScore() {
-    var messageFinalHeader = "Complete!";
 
 }
 
@@ -29,6 +31,8 @@ function countdown() {
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
+
+        if
     
         if(timeLeft === 0) {
     
