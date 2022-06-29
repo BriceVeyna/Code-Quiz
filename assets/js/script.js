@@ -16,8 +16,9 @@ function displayIntroduction() {
     highScoresEl.style.display = "none";
 }
 
-// Initalize quiz based on click event
+// Initalize quiz and countdown based on click event
 startEl.addEventListener("click", displayQuestion);
+startEl.addEventListener("click", countdown);
 
 // Suppress all content other than question page, run through questions adding or subtracting time based on correct or incorrect answers
 function displayQuestion() {
@@ -42,12 +43,27 @@ function displayQuestion() {
         5: ["JavaScript", "terminal/bash", "for loops", "console.log"]
     };
 
-    var questionTotal = questionHeader.length;
+    // Count number of questions in question header object
+    var questionTotal = 0;
+
+    function totalProperties(obj) {
+        for (var property in obj) {
+            if(obj.hasOwnProperty(property))
+            questionTotal++;
+        }
+    }
+
+    totalProperties(questionHeader);
     console.log(questionTotal);
 
+    // Iterate over number of questions,
     for (var i = 0; i < questionTotal; i++) {
-        questionHeaderMain = questionHeader[i];
-        questionListMain = questionList[i];
+        questionHeaderMain = questionHeader[1];
+        console.log(questionHeaderMain);
+        questionEl.children[0].textContent = questionHeaderMain;
+        questionListMain = questionList[1];
+        console.log(questionListMain);
+        questionEl.children[1].textContent = questionListMain;
         if (answer === true) {
             timeLeft + 10;
         } else {
