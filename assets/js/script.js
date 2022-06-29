@@ -1,19 +1,30 @@
 var timerEl = document.getElementById("timer");
-var scoresEl = document.getElementById("scores");
-var mainEl = document.getElementsByName("main");
+var viewScoresEl = document.getElementById("viewScores");
+var introEl = document.getElementById("intro");
+var questionEl = document.getElementById("question");
+var scoreEl = document.getElementById("score");
+var highScoresEl = document.getElementById("highScores");
 var startEl = document.getElementById("start");
 
 var timeLeft = 60;
 
+// Suppress all content other than intro page
 function displayIntroduction() {
-
+    introEl.style.display = "";
+    questionEl.style.display = "none";
+    scoreEl.style.display = "none";
+    highScoresEl.style.display = "none";
 }
 
-function startQuiz() {
-    startEl.addEventListener("click", displayQuestion);
-}
+// Initalize quiz based on click event
+startEl.addEventListener("click", displayQuestion);
 
+// Suppress all content other than question page, run through questions adding or subtracting time based on correct or incorrect answers
 function displayQuestion() {
+
+    introEl.style.display = "none";
+    questionEl.style.display = "";
+
     var questionHeaderMain = "";
     var questionListMain = ["", "", "", ""];
     var questionHeader = {
@@ -31,26 +42,38 @@ function displayQuestion() {
         5: ["JavaScript", "terminal/bash", "for loops", "console.log"]
     };
 
+    var questionTotal = questionHeader.length;
+    console.log(questionTotal);
+
     for (var i = 0; i < questionTotal; i++) {
+        questionHeaderMain = questionHeader[i];
+        questionListMain = questionList[i];
         if (answer === true) {
             timeLeft + 10;
         } else {
             timeLeft - 10;
         }
-        questionHeaderMain = questionHeader[i];
-        questionListMain = questionList[i];
     }
 
 }
 
+// Move to next question, display correct or incorrect message based on click event
+
+// Suppress all content other than display score page
 function displayScore() {
-
+    questionEl.style.display = "none";
+    scoreEl.style.display = "";
 }
 
+// Suppress all content other than high score page
 function displayHighScores() {
-
+    introEl.style.display = "none";
+    questionEl.style.display = "none";
+    scoreEl.style.display = "none";
+    highScoresEl.style.display = "";
 }
 
+// Creates timer countdown
 function countdown() {
 
     var timeInterval = setInterval(function () {
