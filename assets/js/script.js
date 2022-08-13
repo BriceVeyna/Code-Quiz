@@ -1,12 +1,17 @@
-var timerEl = document.getElementById("timer");
-var viewScoresEl = document.getElementById("viewScores");
-var introEl = document.getElementById("intro");
-var questionsEl = document.getElementById("questions");
-var scoreEl = document.getElementById("score");
-var highScoresEl = document.getElementById("highScores");
-var startEl = document.getElementById("start");
+const timerEl = document.getElementById("timer");
+const viewScoresEl = document.getElementById("viewScores");
+const introEl = document.getElementById("intro");
+const questionsEl = document.getElementById("questions");
+const scoreEl = document.getElementById("score");
+const highScoresEl = document.getElementById("highScores");
+const startEl = document.getElementById("start");
 
-var timeLeft = 60;
+const btn1 = document.getElementById("btn-1");
+const btn2 = document.getElementById("btn-2");
+const btn3 = document.getElementById("btn-3");
+const btn4 = document.getElementById("btn-4");
+
+let timeLeft = 60;
 
 // Suppress all content other than intro page
 function displayIntroduction() {
@@ -22,6 +27,8 @@ startEl.addEventListener("click", countdown);
 
 // Suppress all content other than question page, run through questions adding or subtracting time based on correct or incorrect answers
 function displayQuestion() {
+
+    let questionIndex = 0;
 
     introEl.style.display = "none";
     questionsEl.style.display = "";
@@ -54,17 +61,52 @@ function displayQuestion() {
         },
     ]
 
-    for (let i = 0; i < questions.length; i++) {
-        questionsEl.children[0].textContent = questions[i].questionHeader;
-        for (let j = 0; j < questions[i].questionList.length; j++) {
-            questionsEl.children[1].children[j].textContent = questions[i].questionList[j];
-        }
-        if ( choice === questions[i].answer) {
+
+    questionsEl.children[0].textContent = questions[questionIndex].questionHeader;
+    for (let i = 0; i < questions[questionIndex].questionList.length; i++) {
+        questionsEl.children[1].children[i].textContent = questions[questionIndex].questionList[i];
+    }
+
+    btn1.addEventListener("click", () => {
+        let choice = btn1.innerHTML;
+        if (choice === questions[questionIndex].answer) {
             timeLeft + 10;
+            questionIndex++;
         } else {
             timeLeft - 10;
+            questionIndex++;
         }
-    }
+    });
+    btn2.addEventListener("click", () => {
+        let choice = btn2.innerHTML;
+        if (choice === questions[questionIndex].answer) {
+            timeLeft + 10;
+            questionIndex++;
+        } else {
+            timeLeft - 10;
+            questionIndex++;
+        }
+    });
+    btn3.addEventListener("click", () => {
+        let choice = btn3.innerHTML;
+        if (choice === questions[questionIndex].answer) {
+            timeLeft + 10;
+            questionIndex++;
+        } else {
+            timeLeft - 10;
+            questionIndex++;
+        }
+    });
+    btn4.addEventListener("click", () => {
+        let choice = btn4.innerHTML;
+        if (choice === questions[questionIndex].answer) {
+            timeLeft + 10;
+            questionIndex++;
+        } else {
+            timeLeft - 10;
+            questionIndex++;
+        }
+    });
 }
 
 // Move to next question, display correct or incorrect message based on click event
