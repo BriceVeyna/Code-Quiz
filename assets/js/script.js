@@ -3,6 +3,7 @@ const viewScoresEl = document.getElementById("viewScores");
 const introEl = document.getElementById("intro");
 const questionsEl = document.getElementById("questions");
 const scoreEl = document.getElementById("score");
+const finalScore = document.getElementById("final-score");
 const highScoresEl = document.getElementById("highScores");
 const startEl = document.getElementById("start");
 
@@ -74,7 +75,7 @@ function displayQuestion() {
     function questionStatus(choice) {
         if (choice === questions[questionIndex].answer) {
             questionsEl.children[3].textContent = 'Correct!'
-            timeLeft + 10;
+            timeLeft = timeLeft + 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
                 quizComplete = true;
@@ -84,7 +85,7 @@ function displayQuestion() {
             }
         } else {
             questionsEl.children[3].textContent = 'Wrong!'
-            timeLeft - 10;
+            timeLeft = timeLeft - 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
                 quizComplete = true;
@@ -120,6 +121,7 @@ function displayQuestion() {
 function displayScore() {
     questionsEl.style.display = "none";
     scoreEl.style.display = "";
+    finalScore.textContent = timeLeft;
 }
 
 // Suppress all content other than high score page
@@ -135,7 +137,7 @@ function countdown() {
 
     var timeInterval = setInterval(function () {
         timeLeft--;
-        timerEl.textContent = "Time: " + timeLeft;
+        timerEl.textContent = timeLeft;
     
         if (timeLeft && quizComplete > 0) {
 
