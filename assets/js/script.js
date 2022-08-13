@@ -61,20 +61,25 @@ function displayQuestion() {
         },
     ]
 
-
-    questionsEl.children[0].textContent = questions[questionIndex].questionHeader;
-    for (let i = 0; i < questions[questionIndex].questionList.length; i++) {
-        questionsEl.children[1].children[i].textContent = questions[questionIndex].questionList[i];
+    function nextQuestion() {
+        questionsEl.children[0].textContent = questions[questionIndex].questionHeader;
+        for (let i = 0; i < questions[questionIndex].questionList.length; i++) {
+            questionsEl.children[1].children[i].textContent = questions[questionIndex].questionList[i];
+        }
     }
+
+    nextQuestion();
 
     btn1.addEventListener("click", () => {
         let choice = btn1.innerHTML;
         if (choice === questions[questionIndex].answer) {
             timeLeft + 10;
             questionIndex++;
+            nextQuestion();
         } else {
             timeLeft - 10;
             questionIndex++;
+            nextQuestion();
         }
     });
     btn2.addEventListener("click", () => {
@@ -82,9 +87,11 @@ function displayQuestion() {
         if (choice === questions[questionIndex].answer) {
             timeLeft + 10;
             questionIndex++;
+            nextQuestion();
         } else {
             timeLeft - 10;
             questionIndex++;
+            nextQuestion();
         }
     });
     btn3.addEventListener("click", () => {
@@ -92,9 +99,11 @@ function displayQuestion() {
         if (choice === questions[questionIndex].answer) {
             timeLeft + 10;
             questionIndex++;
+            nextQuestion();
         } else {
             timeLeft - 10;
             questionIndex++;
+            nextQuestion();
         }
     });
     btn4.addEventListener("click", () => {
@@ -102,9 +111,11 @@ function displayQuestion() {
         if (choice === questions[questionIndex].answer) {
             timeLeft + 10;
             questionIndex++;
+            nextQuestion();
         } else {
             timeLeft - 10;
             questionIndex++;
+            nextQuestion();
         }
     });
 }
