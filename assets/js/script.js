@@ -12,6 +12,7 @@ const btn3 = document.getElementById("btn-3");
 const btn4 = document.getElementById("btn-4");
 
 let timeLeft = 60;
+let quizComplete = false;
 
 // Suppress all content other than intro page
 function displayIntroduction() {
@@ -61,6 +62,7 @@ function displayQuestion() {
         },
     ]
 
+    // Render question and choices
     function nextQuestion() {
         questionsEl.children[0].textContent = questions[questionIndex].questionHeader;
         for (let i = 0; i < questions[questionIndex].questionList.length; i++) {
@@ -68,19 +70,24 @@ function displayQuestion() {
         }
     }
 
+    // Display correct or incorrect message, add or subtract time, add to question index, and then move on to next question or section
     function questionStatus(choice) {
         if (choice === questions[questionIndex].answer) {
+            questionsEl.children[3].textContent = 'Correct!'
             timeLeft + 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
+                quizComplete = true;
                 displayScore();
             } else {
                 nextQuestion();
             }
         } else {
+            questionsEl.children[3].textContent = 'Wrong!'
             timeLeft - 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
+                quizComplete = true;
                 displayScore();
             } else {
                 nextQuestion();
@@ -90,6 +97,7 @@ function displayQuestion() {
 
     nextQuestion();
 
+    // Listen for answer choice and load appropriate response
     btn1.addEventListener("click", () => {
         let choice = btn1.innerHTML;
         questionStatus(choice);
@@ -107,8 +115,6 @@ function displayQuestion() {
         questionStatus(choice);
     });
 }
-
-// Move to next question, display correct or incorrect message based on click event
 
 // Suppress all content other than display score page
 function displayScore() {
@@ -131,12 +137,18 @@ function countdown() {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
     
+        if (timeLeft && quizComplete > 0) {
+
+            // Clear remaining time and display score page
+            clearInterval(timeInterval);
+            displayScore();
+        }
+
         if(timeLeft === 0) {
     
-          clearInterval(timeInterval);
-    
-          // call function displayScore
-          displayScore();
+            // Clear remaining time and display score page
+            clearInterval(timeInterval);
+            displayScore();
         }
     
     },1000);
