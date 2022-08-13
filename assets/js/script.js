@@ -68,55 +68,43 @@ function displayQuestion() {
         }
     }
 
+    function questionStatus(choice) {
+        if (choice === questions[questionIndex].answer) {
+            timeLeft + 10;
+            questionIndex++;
+            if (questionIndex >= questions.length) {
+                displayScore();
+            } else {
+                nextQuestion();
+            }
+        } else {
+            timeLeft - 10;
+            questionIndex++;
+            if (questionIndex >= questions.length) {
+                displayScore();
+            } else {
+                nextQuestion();
+            }
+        }
+    }
+
     nextQuestion();
 
     btn1.addEventListener("click", () => {
         let choice = btn1.innerHTML;
-        if (choice === questions[questionIndex].answer) {
-            timeLeft + 10;
-            questionIndex++;
-            nextQuestion();
-        } else {
-            timeLeft - 10;
-            questionIndex++;
-            nextQuestion();
-        }
+        questionStatus(choice);
     });
     btn2.addEventListener("click", () => {
         let choice = btn2.innerHTML;
-        if (choice === questions[questionIndex].answer) {
-            timeLeft + 10;
-            questionIndex++;
-            nextQuestion();
-        } else {
-            timeLeft - 10;
-            questionIndex++;
-            nextQuestion();
-        }
+        questionStatus(choice);
     });
     btn3.addEventListener("click", () => {
         let choice = btn3.innerHTML;
-        if (choice === questions[questionIndex].answer) {
-            timeLeft + 10;
-            questionIndex++;
-            nextQuestion();
-        } else {
-            timeLeft - 10;
-            questionIndex++;
-            nextQuestion();
-        }
+        questionStatus(choice);
     });
     btn4.addEventListener("click", () => {
         let choice = btn4.innerHTML;
-        if (choice === questions[questionIndex].answer) {
-            timeLeft + 10;
-            questionIndex++;
-            nextQuestion();
-        } else {
-            timeLeft - 10;
-            questionIndex++;
-            nextQuestion();
-        }
+        questionStatus(choice);
     });
 }
 
