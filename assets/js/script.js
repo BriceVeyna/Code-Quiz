@@ -10,6 +10,7 @@ const homeEl = document.getElementById("home");
 const initialsEl = document.getElementById("initials");
 const submitEl = document.getElementById("submit");
 const scoreListEl = document.getElementById("score-list");
+const clearScoresEl = document.getElementById("clear-scores");
 
 const btn1 = document.getElementById("btn-1");
 const btn2 = document.getElementById("btn-2");
@@ -20,16 +21,6 @@ let timeLeft = 60;
 let quizComplete = false;
 let storedHighScores = [];
 
-// Suppress all content other than intro page
-function displayIntroduction() {
-    timeLeft = 60;
-    quizComplete = false;
-    introEl.style.display = "";
-    questionsEl.style.display = "none";
-    scoreEl.style.display = "none";
-    highScoresEl.style.display = "none";
-}
-
 // Initalize quiz and countdown based on click event
 startEl.addEventListener("click", displayQuestion);
 startEl.addEventListener("click", countdown);
@@ -39,6 +30,48 @@ viewScoresEl.addEventListener("click", displayHighScores);
 
 // Display home page on click event
 homeEl.addEventListener("click", displayIntroduction);
+
+submitEl.addEventListener('click', function(event) {
+    
+    // Prevents default behavior of the button
+    event.preventDefault();
+
+    // Store raw input in variable, log to verify
+    var name = initialsEl.value.trim();
+    console.log(initials);
+    
+    // Store searched high scores in existing array
+    storedHighScores.push({
+        initials: name,
+        score: timeLeft,
+    });
+    console.log(storedHighScores);
+    
+    localStorage.setItem('Scores', JSON.stringify(storedHighScores));
+    
+    // Clear search Field
+    initialsEl.value = '';
+
+    // Add score to list, display high scores page
+    addStoredScores();
+    displayHighScores();
+})
+
+clearScoresEl.addEventListener('click', function() {
+    storedHighScores = [];
+    localStorage.removeItem('Scores');
+    displayHighScores();
+})
+
+// Suppress all content other than intro page
+function displayIntroduction() {
+    timeLeft = 60;
+    quizComplete = false;
+    introEl.style.display = "";
+    questionsEl.style.display = "none";
+    scoreEl.style.display = "none";
+    highScoresEl.style.display = "none";
+}
 
 // Suppress all content other than question page, run through questions adding or subtracting time based on correct or incorrect answers
 function displayQuestion() {
@@ -155,7 +188,7 @@ function getStoredScores() {
         storedHighScores = localScores;
     }
 
-    // Initialize addStoredCities function
+    // Initialize addStoredScores function
     addStoredScores();
 }
 
@@ -171,31 +204,6 @@ function addStoredScores() {
         scoreListEl.appendChild(li);
     }
 }
-
-submitEl.addEventListener('click', function(event) {
-    
-    // Prevents default behavior of the button
-    event.preventDefault();
-
-    // Store raw input in variable, log to verify
-    var name = initialsEl.value.trim();
-    console.log(initials);
-    
-    // Store searched city in existing array
-    storedHighScores.push({
-        initials: name,
-        score: timeLeft,
-    });
-    console.log(storedHighScores);
-    
-    localStorage.setItem('Scores', JSON.stringify(storedHighScores));
-    
-    // Clear search Field
-    initialsEl.value = '';
-
-    // Initialize addStoredCities function
-    addStoredScores();
-})
 
 // Creates timer countdown
 function countdown() {
