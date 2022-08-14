@@ -7,6 +7,9 @@ const finalScore = document.getElementById("final-score");
 const highScoresEl = document.getElementById("highScores");
 const startEl = document.getElementById("start");
 const homeEl = document.getElementById("home");
+const initialsEl = document.getElementById("initials");
+const submitEl = document.getElementById("submit");
+const scoreListEl = document.getElementById("score-list");
 
 const btn1 = document.getElementById("btn-1");
 const btn2 = document.getElementById("btn-2");
@@ -15,6 +18,7 @@ const btn4 = document.getElementById("btn-4");
 
 let timeLeft = 60;
 let quizComplete = false;
+let storedHighScores = [];
 
 // Suppress all content other than intro page
 function displayIntroduction() {
@@ -139,7 +143,59 @@ function displayHighScores() {
     questionsEl.style.display = "none";
     scoreEl.style.display = "none";
     highScoresEl.style.display = "";
+    getStoredScores();
 }
+
+// Get high scores from local storage
+function getStoredScores() {
+    localScores = JSON.parse(localStorage.getItem('Scores'));
+
+    // If there is no locally stored variable, default to empty program variable
+    if (localScores !== null) {
+        storedHighScores = localScores;
+    }
+
+    // Initialize addStoredCities function
+    addStoredScores();
+}
+
+// Add stored high scores to list
+function addStoredScores() {
+    scoreListEl.innerHTML = '';
+
+    for (var i = 0; i < storedHighScores.length; i++) {
+        var storedScore = storedHighScores[i].initials + " - " + storedHighScores[i].score;
+    
+        var li = document.createElement('li');
+        li.textContent = storedScore;
+        scoreListEl.appendChild(li);
+    }
+}
+
+submitEl.addEventListener('click', function(event) {
+    
+    // Prevents default behavior of the button
+    event.preventDefault();
+
+    // Store raw input in variable, log to verify
+    var name = initialsEl.value.trim();
+    console.log(initials);
+    
+    // Store searched city in existing array
+    storedHighScores.push({
+        initials: name,
+        score: timeLeft,
+    });
+    console.log(storedHighScores);
+    
+    localStorage.setItem('Scores', JSON.stringify(storedHighScores));
+    
+    // Clear search Field
+    initialsEl.value = '';
+
+    // Initialize addStoredCities function
+    addStoredScores();
+})
 
 // Creates timer countdown
 function countdown() {
