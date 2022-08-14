@@ -1,0 +1,58 @@
+html {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+main {
+    margin: 100px 30% 0 30%;
+}
+
+#intro {
+    text-align: center;
+    padding: 10%;
+}
+
+#questions {
+    padding: 10%;
+}
+
+#answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    padding: 10px;
+    margin: 5px;
+    max-width: 250px;
+}
+
+#score {
+    padding: 10%
+}
+
+#highScores {
+    padding: 10%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
