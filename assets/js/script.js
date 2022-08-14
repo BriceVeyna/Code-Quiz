@@ -38,14 +38,12 @@ submitEl.addEventListener('click', function(event) {
 
     // Store raw input in variable, log to verify
     var name = initialsEl.value.trim();
-    console.log(initials);
     
     // Store searched high scores in existing array
     storedHighScores.push({
         initials: name,
         score: timeLeft,
     });
-    console.log(storedHighScores);
     
     localStorage.setItem('Scores', JSON.stringify(storedHighScores));
     
@@ -107,7 +105,7 @@ function displayQuestion() {
             questionList: ["JavaScript", "terminal/bash", "for loops", "console.log"],
             answer: "console.log",
         },
-    ]
+    ];
 
     // Render question and choices
     function nextQuestion() {
@@ -120,7 +118,7 @@ function displayQuestion() {
     // Display correct or incorrect message, add or subtract time, add to question index, and then move on to next question or section
     function questionStatus(choice) {
         if (choice === questions[questionIndex].answer) {
-            questionsEl.children[3].textContent = 'Correct!'
+            questionsEl.children[3].textContent = 'Correct!';
             timeLeft = timeLeft + 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
@@ -130,7 +128,7 @@ function displayQuestion() {
                 nextQuestion();
             }
         } else {
-            questionsEl.children[3].textContent = 'Wrong!'
+            questionsEl.children[3].textContent = 'Wrong!';
             timeLeft = timeLeft - 10;
             questionIndex++;
             if (questionIndex >= questions.length) {
