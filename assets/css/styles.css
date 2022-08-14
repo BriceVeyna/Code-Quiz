@@ -7,7 +7,26 @@ html {
 }
 
 body {
+    margin: 0;
     width: 100%;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+h2 {
+    margin: 25px 20px 25px 20px;
+    font-size: 25px;
+}
+
+#viewScores {
+    color: violet;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }
 
 header {
@@ -15,6 +34,8 @@ header {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    background: darkblue;
+    color: antiquewhite;
 }
 
 main {
