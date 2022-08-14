@@ -6,6 +6,7 @@ const scoreEl = document.getElementById("score");
 const finalScore = document.getElementById("final-score");
 const highScoresEl = document.getElementById("highScores");
 const startEl = document.getElementById("start");
+const homeEl = document.getElementById("home");
 
 const btn1 = document.getElementById("btn-1");
 const btn2 = document.getElementById("btn-2");
@@ -17,6 +18,8 @@ let quizComplete = false;
 
 // Suppress all content other than intro page
 function displayIntroduction() {
+    timeLeft = 60;
+    quizComplete = false;
     introEl.style.display = "";
     questionsEl.style.display = "none";
     scoreEl.style.display = "none";
@@ -26,6 +29,12 @@ function displayIntroduction() {
 // Initalize quiz and countdown based on click event
 startEl.addEventListener("click", displayQuestion);
 startEl.addEventListener("click", countdown);
+
+// Display high score page based on click event
+viewScoresEl.addEventListener("click", displayHighScores);
+
+// Display home page on click event
+homeEl.addEventListener("click", displayIntroduction);
 
 // Suppress all content other than question page, run through questions adding or subtracting time based on correct or incorrect answers
 function displayQuestion() {
