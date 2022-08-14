@@ -20,6 +20,10 @@ h2 {
     font-size: 25px;
 }
 
+p {
+    font-size: 20px;
+}
+
 #viewScores {
     color: violet;
     cursor: pointer;
@@ -27,6 +31,14 @@ h2 {
 
 button {
     cursor: pointer;
+    background: darkblue;
+    color: antiquewhite;
+    border-radius: 5px;
+}
+
+#start, #submit, #home, #clear-scores {
+    padding: 8px 15px 8px 15px;
+    font-size: 18px;
 }
 
 header {
@@ -60,14 +72,32 @@ main {
     padding: 10px;
     margin: 5px;
     max-width: 250px;
+    font-size: 18px;
 }
 
 #score {
     padding: 10%
 }
 
+label, input {
+    font-size: 20px;
+    padding: 8px;
+}
+
 #highScores {
     padding: 10%;
+}
+
+ol {
+    list-style-position: inside;
+    padding: 0;
+}
+
+li {
+    background: lavender;
+    padding: 10px 0 10px 0;
+    margin-bottom: 5px;
+    font-size: 20px;
 }
 
 footer {
