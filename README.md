@@ -2,7 +2,7 @@
 This project creates a timed quiz on coding concepts and stores high scores.
 
 ## Description
-
+This project creates a timed quiz application on coding concepts that allows the user to store high scores in local storage and view at a later date.
 
 ### Deployed Application
 [Code-Quiz](https://briceveyna.github.io/Code-Quiz/)
@@ -11,7 +11,7 @@ This project creates a timed quiz on coding concepts and stores high scores.
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Usage
-
+Upon clicking the start button, the timer in the upper righthand corner will begin counting down and the first question will be displayed. Each correct answer will add 10 seconds and each incorrect answer will subtract 10 seconds. The final score is the time remaining upon completion of the quiz. If the time runs out before the quiz is complete, the score is zero. Upon completion of the quiz, the user can input their initials to add their score to the high scores list. The high scores can be seen by clicking the view high scores link in the upper lefthand corner. From the high scores page, the user can return to the homepage or clear the stored high scores.
 
 ## Features
 
