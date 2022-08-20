@@ -39,12 +39,16 @@ submitEl.addEventListener('click', function(event) {
     // Store raw input in variable, log to verify
     var name = initialsEl.value.trim();
     
-    // Store searched high scores in existing array
+    // Add new score to existing array
     storedHighScores.push({
         initials: name,
         score: timeLeft,
     });
-    
+
+    // Sort scores highest to lowest
+    storedHighScores.sort((b, a) => a.score - b.score);
+
+    // Add scores to local storage
     localStorage.setItem('Scores', JSON.stringify(storedHighScores));
     
     // Clear search Field
