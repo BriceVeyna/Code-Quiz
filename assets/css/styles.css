@@ -76,7 +76,14 @@ main {
 }
 
 #score {
-    padding: 10%
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10%;
+}
+
+#score h1, #score p {
+    text-align: center;
 }
 
 label, input {

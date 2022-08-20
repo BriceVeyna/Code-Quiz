@@ -37,7 +37,11 @@ submitEl.addEventListener('click', function(event) {
     event.preventDefault();
 
     // Store raw input in variable, log to verify
-    var name = initialsEl.value.trim();
+    if (initialsEl.value === '') {
+        var name = 'Mysterious Stranger';
+    } else {
+        var name = initialsEl.value.trim();
+    }
     
     // Add new score to existing array
     storedHighScores.push({
